@@ -11,9 +11,9 @@
   <meta name="apple-mobile-web-app-title" content="Shadow"/>
   <meta name="theme-color" content="#0f0e1a"/>
   <!-- Icône pour iOS (écran d'accueil) -->
-  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/TON_USERNAME/TON_REPO/main/icon.svg"/>
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/Lonjhe/shadowtracker/refs/heads/main/icon.svg"/>
   <!-- Icône pour Android / navigateurs -->
-  <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/TON_USERNAME/TON_REPO/main/icon.svg"/>
+  <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/Lonjhe/shadowtracker/refs/heads/main/icon.svg"/>
   <!-- Splash screen iOS -->
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet"/>
@@ -37,7 +37,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 *,-webkit-tap-highlight-color{-webkit-tap-highlight-color:rgba(0,0,0,0)}
 button,a,[role="button"]{touch-action:manipulation;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
-input,textarea{-webkit-appearance:none;border-radius:0}
+input,textarea,select{-webkit-appearance:none;border-radius:0;max-width:100%;box-sizing:border-box}
 html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:hidden}
 body{font-family:var(--font-body);background:var(--bg);color:var(--tx);min-height:100dvh;font-size:15px;line-height:1.5;overflow-x:hidden}
 button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
@@ -45,7 +45,7 @@ input,textarea,select{font:inherit;color:inherit}
 img{display:block;max-width:100%}
 
 /* ─── LAYOUT SHELL ────────────────────────────── */
-.shell{display:flex;min-height:100dvh}
+.shell{display:flex;min-height:100dvh;overflow-x:hidden;width:100%}
 
 /* ─── SIDEBAR (desktop) ────────────────────────── */
 .sidebar{
@@ -87,7 +87,7 @@ img{display:block;max-width:100%}
 .sb-date{padding:var(--sp3);font-size:12px;color:var(--tx3);border-top:1px solid var(--bd)}
 
 /* ─── MAIN CONTENT ───────────────────────────── */
-.main-wrap{flex:1;display:flex;flex-direction:column;min-width:0;min-width:0;overflow:visible}
+.main-wrap{flex:1;display:flex;flex-direction:column;min-width:0;overflow-x:hidden;overflow-y:visible}
 
 /* ─── TOPBAR ──────────────────────────────────── */
 .topbar{
@@ -107,9 +107,9 @@ img{display:block;max-width:100%}
 }
 
 /* ─── PAGES ───────────────────────────────────── */
-.pages{flex:1;overflow-y:auto;padding:var(--sp4) var(--sp3) 80px}
+.pages{flex:1;overflow-y:auto;overflow-x:hidden;padding:var(--sp4) var(--sp3) 80px;width:100%;box-sizing:border-box}
 @media(min-width:900px){.pages{padding:var(--sp6);padding-bottom:var(--sp6)}}
-.page{display:none}
+.page{display:none;width:100%;box-sizing:border-box;overflow-x:hidden}
 .page.on{display:block}
 
 /* ─── CARDS ───────────────────────────────────── */
@@ -120,7 +120,7 @@ img{display:block;max-width:100%}
   padding:var(--sp4);
   box-shadow:var(--shadow);
 }
-.card h3{font-size:15px;font-weight:700;margin-bottom:var(--sp4);display:flex;align-items:center;gap:8px}
+.card h3{font-size:clamp(13px,3.5vw,15px);font-weight:700;margin-bottom:var(--sp3);display:flex;align-items:center;gap:8px}
 
 /* ─── KPI GRID ─────────────────────────────────── */
 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp3);margin-bottom:var(--sp4)}
@@ -230,13 +230,13 @@ img{display:block;max-width:100%}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin:var(--sp2) 0}
 .tag{background:rgba(124,58,237,.18);border:1px solid rgba(124,58,237,.3);color:#c4b5fd;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:600}
 .cbox{background:var(--s3);border-radius:var(--radius-sm);padding:10px 12px;font-size:13px;color:var(--tx2);white-space:pre-wrap;margin-top:var(--sp2)}
-.ract{display:flex;gap:8px;margin-top:var(--sp3)}
+.ract{display:flex;gap:8px;margin-top:var(--sp3);flex-wrap:wrap}
 
 /* ─── ADMIN ──────────────────────────────────────── */
 .admin-2col{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp4)}
-@media(max-width:699px){.admin-2col{grid-template-columns:1fr}}
-.addrow{display:flex;gap:8px;margin-bottom:var(--sp3)}
-.addrow input{flex:1;background:var(--s3);border:1px solid var(--bd);border-radius:var(--radius-sm);padding:10px 12px;outline:none;transition:var(--transition);font-size:14px}
+@media(max-width:799px){.admin-2col{grid-template-columns:1fr;gap:var(--sp3)}}
+.addrow{display:flex;gap:6px;margin-bottom:var(--sp3);flex-wrap:wrap}
+.addrow input{flex:1;min-width:0;background:var(--s3);border:1px solid var(--bd);border-radius:var(--radius-sm);padding:10px 12px;outline:none;transition:var(--transition);font-size:14px;box-sizing:border-box}
 .addrow input:focus{border-color:var(--pu1)}
 .ai{display:flex;align-items:center;justify-content:space-between;background:var(--s3);border-radius:var(--radius-sm);padding:10px 12px;margin-top:8px;gap:8px}
 .ai-info{min-width:0}
@@ -244,7 +244,7 @@ img{display:block;max-width:100%}
 .ai-info small{font-size:11px;color:var(--tx2)}
 
 /* ─── BUTTONS ─────────────────────────────────────── */
-.btn{border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;font-weight:700;transition:var(--transition);white-space:nowrap}
+.btn{border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;font-weight:700;transition:var(--transition);white-space:normal;word-break:keep-all}
 .btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
 .bsm{padding:7px 11px;font-size:12px}
 .bg{background:linear-gradient(135deg,var(--pu1),var(--te2));color:#fff}
@@ -263,7 +263,7 @@ img{display:block;max-width:100%}
   background:var(--s3);border:1px solid var(--bd);
   border-radius:var(--radius-sm);padding:12px 14px;
   font-size:14px;outline:none;transition:var(--transition);
-  color:var(--tx);
+  color:var(--tx);width:100%;box-sizing:border-box;
 }
 .field input:focus,.field textarea:focus{border-color:var(--pu1);box-shadow:0 0 0 3px rgba(124,58,237,.15)}
 .field textarea{min-height:90px;resize:vertical}
