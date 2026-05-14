@@ -119,7 +119,6 @@ img{display:block;max-width:100%}
   border-radius:var(--radius-lg);
   padding:var(--sp4);
   box-shadow:var(--shadow);
-  margin-top: 1em;
 }
 .card h3{font-size:clamp(13px,3.5vw,15px);font-weight:700;margin-bottom:var(--sp3);display:flex;align-items:center;gap:8px}
 
@@ -453,8 +452,44 @@ img{display:block;max-width:100%}
 
         <div id="A_content" class="hidden">
           <div class="admin-2col">
-            <!-- col 1 : items + sécu -->
+            <!-- col 1 : collaborateurs -->
             <div>
+              <div class="card">
+                <h3>👤 Collaborateurs</h3>
+                <div class="addrow">
+                  <input id="A_cname" type="text" placeholder="Nom"/>
+                  <input id="A_crole" type="text" placeholder="Poste" style="flex:.65"/>
+                  <button class="btn bg bsm" id="A_cadd">+</button>
+                </div>
+                <!-- CSV import -->
+                <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:var(--sp2)">
+                  <button class="btn bb bsm" id="A_csv_btn" style="flex:1">📄 Importer CSV</button>
+                  <button class="btn br bsm" id="A_clear_all" style="flex:1">🗑 Tout effacer</button>
+                  <input id="A_csv_input" type="file" accept=".csv,text/csv" style="display:none"/>
+                </div>
+                <span id="A_csv_info" style="font-size:11px;color:var(--tx3);display:block;margin-bottom:4px"></span>
+                <div id="A_csv_preview" class="csv-preview hidden">
+                  <div class="csv-preview-title" id="A_csv_title"></div>
+                  <div id="A_csv_rows" class="csv-rows"></div>
+                  <div style="display:flex;gap:7px;margin-top:var(--sp3)">
+                    <button class="btn bg bsm" id="A_csv_confirm" style="flex:1">✓ Importer</button>
+                    <button class="btn bw bsm" id="A_csv_cancel">Annuler</button>
+                  </div>
+                </div>
+                <div class="admin-scroll-list"><div id="A_clist"></div></div>
+              </div>
+            </div>
+
+            <!-- col 2 : items + sécu -->
+            <div>
+              <div class="card" style="margin-bottom:var(--sp4)">
+                <h3>✅ Items de suivi</h3>
+                <div class="addrow">
+                  <input id="A_iname" type="text" placeholder="Nouvel item de suivi"/>
+                  <button class="btn bg bsm" id="A_iadd">+</button>
+                </div>
+                <div class="admin-scroll-list" style="max-height:280px"><div id="A_ilist"></div></div>
+              </div>
               <div class="card">
                 <h3>🔑 Sécurité &amp; Export</h3>
                 <div class="field" style="margin-top:var(--sp3)">
@@ -480,46 +515,7 @@ img{display:block;max-width:100%}
                 </div>
                 <div id="A_sync_status" style="font-size:11px;margin-top:var(--sp2);color:var(--tx3)"></div>
               </div>
-              <div class="card" style="margin-bottom:var(--sp4)">
-                <h3>✅ Items de suivi</h3>
-                <div class="addrow">
-                  <input id="A_iname" type="text" placeholder="Nouvel item de suivi"/>
-                  <button class="btn bg bsm" id="A_iadd">+</button>
-                </div>
-                <div id="A_ilist"></div>
-              </div>
-              
             </div>
-
-            <!-- col 2 : collaborateurs -->
-            <div>
-              <div class="card">
-                <h3>👤 Collaborateurs</h3>
-                <div class="addrow">
-                  <input id="A_cname" type="text" placeholder="Nom"/>
-                  <input id="A_crole" type="text" placeholder="Poste" style="flex:.65"/>
-                  <button class="btn bg bsm" id="A_cadd">+</button>
-                </div>
-                <!-- CSV import -->
-                <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:var(--sp2)">
-                  <button class="btn bb bsm" id="A_csv_btn" style="flex:1">📄 Importer CSV</button>
-                  <button class="btn br bsm" id="A_clear_all" style="flex:1">🗑 Tout effacer</button>
-                  <input id="A_csv_input" type="file" accept=".csv,text/csv" style="display:none"/>
-                </div>
-                <span id="A_csv_info" style="font-size:11px;color:var(--tx3);display:block;margin-bottom:4px"></span>
-                <div id="A_csv_preview" class="csv-preview hidden">
-                  <div class="csv-preview-title" id="A_csv_title"></div>
-                  <div id="A_csv_rows" class="csv-rows"></div>
-                  <div style="display:flex;gap:7px;margin-top:var(--sp3)">
-                    <button class="btn bg bsm" id="A_csv_confirm" style="flex:1">✓ Importer</button>
-                    <button class="btn bw bsm" id="A_csv_cancel">Annuler</button>
-                  </div>
-                </div>
-                <div id="A_clist"></div>
-              </div>
-            </div>
-
-            
           </div>
         </div>
       </div>
@@ -575,8 +571,8 @@ img{display:block;max-width:100%}
 
 document.addEventListener('DOMContentLoaded', function(){
 // ─── DATA ─────────────────────────────────────────────────────────────────────
-var DEF_CO=[{n:'Alice Dupont',r:'Specialist'},{n:'Thomas Bernard',r:'Business Pro'},{n:'Camille Martin',r:'Expert'}];
-var DEF_IT=['Connecter un autre shopping','Personnaliser une autre démo','Autre AppleCare','Autre business','Autre ligne','Autre financement','Autre alignement'];
+var DEF_CO=[];
+var DEF_IT=[];
 
 function lj(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}}
 function sj(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
