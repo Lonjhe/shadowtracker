@@ -438,7 +438,45 @@ img{display:block;max-width:100%}
 
         <div id="A_content" class="hidden">
           <div class="admin-2col">
-            <!-- col 1 : collaborateurs -->
+            <!-- col 1 : items + sécu -->
+            <div>
+              <div class="card">
+                <h3>🔑 Sécurité &amp; Export</h3>
+                <div class="field" style="margin-top:var(--sp3)">
+                  <label>Nouveau mot de passe</label>
+                  <input id="A_np1" type="password" placeholder="Nouveau"/>
+                </div>
+                <div class="field">
+                  <label>Confirmer</label>
+                  <input id="A_np2" type="password" placeholder="Confirmer"/>
+                </div>
+                <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:var(--sp4)">
+                  <button class="btn bp" id="A_cpw">Changer</button>
+                  <button class="btn bt" id="A_exp">Export CSV</button>
+                  <button class="btn br" id="A_lck">Verrouiller</button>
+                </div>
+                <div style="height:1px;background:var(--bd);margin-bottom:var(--sp4)"></div>
+                <div style="font-size:12px;font-weight:800;color:var(--tx2);margin-bottom:6px">☁️ Synchronisation partagée (iCloud / AirDrop)</div>
+                <div style="font-size:11px;color:var(--tx3);margin-bottom:var(--sp3);line-height:1.5">Exporte toutes les données en JSON, partage via iCloud Drive ou AirDrop, puis importe sur un autre appareil. Les nouvelles entrées sont fusionnées sans écraser l'existant.</div>
+                <div style="display:flex;gap:7px;flex-wrap:wrap">
+                  <button class="btn bg" id="A_expjson" style="flex:1">↑ Export JSON</button>
+                  <button class="btn bb" id="A_impjson_btn" style="flex:1">↓ Import JSON</button>
+                  <input id="A_impjson_input" type="file" accept=".json,application/json" style="display:none"/>
+                </div>
+                <div id="A_sync_status" style="font-size:11px;margin-top:var(--sp2);color:var(--tx3)"></div>
+              </div>
+              <div class="card" style="margin-bottom:var(--sp4)">
+                <h3>✅ Items de suivi</h3>
+                <div class="addrow">
+                  <input id="A_iname" type="text" placeholder="Nouvel item de suivi"/>
+                  <button class="btn bg bsm" id="A_iadd">+</button>
+                </div>
+                <div id="A_ilist"></div>
+              </div>
+              
+            </div>
+
+            <!-- col 2 : collaborateurs -->
             <div>
               <div class="card">
                 <h3>👤 Collaborateurs</h3>
@@ -466,42 +504,7 @@ img{display:block;max-width:100%}
               </div>
             </div>
 
-            <!-- col 2 : items + sécu -->
-            <div>
-              <div class="card" style="margin-bottom:var(--sp4)">
-                <h3>✅ Items de suivi</h3>
-                <div class="addrow">
-                  <input id="A_iname" type="text" placeholder="Nouvel item de suivi"/>
-                  <button class="btn bg bsm" id="A_iadd">+</button>
-                </div>
-                <div id="A_ilist"></div>
-              </div>
-              <div class="card">
-                <h3>🔑 Sécurité &amp; Export</h3>
-                <div class="field" style="margin-top:var(--sp3)">
-                  <label>Nouveau mot de passe</label>
-                  <input id="A_np1" type="password" placeholder="Nouveau"/>
-                </div>
-                <div class="field">
-                  <label>Confirmer</label>
-                  <input id="A_np2" type="password" placeholder="Confirmer"/>
-                </div>
-                <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:var(--sp4)">
-                  <button class="btn bp" id="A_cpw">Changer</button>
-                  <button class="btn bt" id="A_exp">Export CSV</button>
-                  <button class="btn br" id="A_lck">Verrouiller</button>
-                </div>
-                <div style="height:1px;background:var(--bd);margin-bottom:var(--sp4)"></div>
-                <div style="font-size:12px;font-weight:800;color:var(--tx2);margin-bottom:6px">☁️ Synchronisation partagée (iCloud / AirDrop)</div>
-                <div style="font-size:11px;color:var(--tx3);margin-bottom:var(--sp3);line-height:1.5">Exporte toutes les données en JSON, partage via iCloud Drive ou AirDrop, puis importe sur un autre appareil. Les nouvelles entrées sont fusionnées sans écraser l'existant.</div>
-                <div style="display:flex;gap:7px;flex-wrap:wrap">
-                  <button class="btn bg" id="A_expjson" style="flex:1">↑ Export JSON</button>
-                  <button class="btn bb" id="A_impjson_btn" style="flex:1">↓ Import JSON</button>
-                  <input id="A_impjson_input" type="file" accept=".json,application/json" style="display:none"/>
-                </div>
-                <div id="A_sync_status" style="font-size:11px;margin-top:var(--sp2);color:var(--tx3)"></div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
