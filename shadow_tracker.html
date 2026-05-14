@@ -239,7 +239,21 @@ img{display:block;max-width:100%}
 .addrow{display:flex;gap:6px;margin-bottom:var(--sp3);flex-wrap:wrap}
 .addrow input{flex:1;min-width:0;background:var(--s3);border:1px solid var(--bd);border-radius:var(--radius-sm);padding:10px 12px;outline:none;transition:var(--transition);font-size:14px;box-sizing:border-box}
 .addrow input:focus{border-color:var(--pu1)}
-.ai{display:flex;align-items:center;justify-content:space-between;background:var(--s3);border-radius:var(--radius-sm);padding:10px 12px;margin-top:8px;gap:8px}
+.admin-scroll-list{
+  max-height:460px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  margin-top:var(--sp2);
+  border-radius:var(--radius-sm);
+  scrollbar-width:thin;
+  scrollbar-color:var(--s4) transparent;
+}
+.admin-scroll-list::-webkit-scrollbar{width:4px}
+.admin-scroll-list::-webkit-scrollbar-track{background:transparent}
+.admin-scroll-list::-webkit-scrollbar-thumb{background:var(--s4);border-radius:4px}
+.ai{display:flex;align-items:center;justify-content:space-between;background:var(--s3);border-radius:var(--radius-sm);padding:10px 12px;margin-top:6px;gap:8px;min-width:0}
 .ai-info{min-width:0}
 .ai-info strong{display:block;font-size:14px;font-weight:700}
 .ai-info small{font-size:11px;color:var(--tx2)}
@@ -561,8 +575,8 @@ img{display:block;max-width:100%}
 
 document.addEventListener('DOMContentLoaded', function(){
 // ─── DATA ─────────────────────────────────────────────────────────────────────
-var DEF_CO=[];
-var DEF_IT=[];
+var DEF_CO=[{n:'Alice Dupont',r:'Specialist'},{n:'Thomas Bernard',r:'Business Pro'},{n:'Camille Martin',r:'Expert'}];
+var DEF_IT=['Connecter un autre shopping','Personnaliser une autre démo','Autre AppleCare','Autre business','Autre ligne','Autre financement','Autre alignement'];
 
 function lj(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}}
 function sj(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
