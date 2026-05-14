@@ -2,7 +2,7 @@
 <html lang="fr" data-theme="dark">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"/>
 <title>Shadow Tracker</title>
   <!-- ─── PWA / App Icon ──────────────────────────────── -->
   <meta name="mobile-web-app-capable" content="yes"/>
@@ -11,9 +11,9 @@
   <meta name="apple-mobile-web-app-title" content="Shadow"/>
   <meta name="theme-color" content="#0f0e1a"/>
   <!-- Icône pour iOS (écran d'accueil) -->
-  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/Lonjhe/shadowtracker/refs/heads/main/icon.svg"/>
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/TON_USERNAME/TON_REPO/main/icon.svg"/>
   <!-- Icône pour Android / navigateurs -->
-  <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/Lonjhe/shadowtracker/refs/heads/main/icon.svg"/>
+  <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/TON_USERNAME/TON_REPO/main/icon.svg"/>
   <!-- Splash screen iOS -->
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet"/>
@@ -38,8 +38,8 @@
 *,-webkit-tap-highlight-color{-webkit-tap-highlight-color:rgba(0,0,0,0)}
 button,a,[role="button"]{touch-action:manipulation;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
 input,textarea{-webkit-appearance:none;border-radius:0}
-html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
-body{font-family:var(--font-body);background:var(--bg);color:var(--tx);min-height:100dvh;font-size:15px;line-height:1.5}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:hidden}
+body{font-family:var(--font-body);background:var(--bg);color:var(--tx);min-height:100dvh;font-size:15px;line-height:1.5;overflow-x:hidden}
 button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 input,textarea,select{font:inherit;color:inherit}
 img{display:block;max-width:100%}
@@ -92,12 +92,12 @@ img{display:block;max-width:100%}
 /* ─── TOPBAR ──────────────────────────────────── */
 .topbar{
   display:flex;align-items:center;justify-content:space-between;
-  padding:var(--sp4) var(--sp6);
+  padding:var(--sp3) var(--sp4);
   background:var(--s1);
   border-bottom:1px solid var(--bd);
   position:sticky;top:0;z-index:9;
 }
-.topbar h1{font-size:18px;font-weight:800;letter-spacing:-.02em}
+.topbar h1{font-size:clamp(15px,3.5vw,18px);font-weight:800;letter-spacing:-.02em}
 .topbar .sub{font-size:13px;color:var(--tx2);margin-top:2px}
 .tb-right{display:flex;align-items:center;gap:var(--sp3)}
 .badge-tot{
@@ -107,8 +107,8 @@ img{display:block;max-width:100%}
 }
 
 /* ─── PAGES ───────────────────────────────────── */
-.pages{flex:1;overflow-y:auto;padding:var(--sp6) var(--sp6) 80px}
-@media(min-width:900px){.pages{padding-bottom:var(--sp6)}}
+.pages{flex:1;overflow-y:auto;padding:var(--sp4) var(--sp3) 80px}
+@media(min-width:900px){.pages{padding:var(--sp6);padding-bottom:var(--sp6)}}
 .page{display:none}
 .page.on{display:block}
 
@@ -117,20 +117,20 @@ img{display:block;max-width:100%}
   background:var(--s2);
   border:1px solid var(--bd);
   border-radius:var(--radius-lg);
-  padding:var(--sp6);
+  padding:var(--sp4);
   box-shadow:var(--shadow);
 }
 .card h3{font-size:15px;font-weight:700;margin-bottom:var(--sp4);display:flex;align-items:center;gap:8px}
 
 /* ─── KPI GRID ─────────────────────────────────── */
-.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp4);margin-bottom:var(--sp6)}
-@media(max-width:899px){.kpi-row{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.kpi-row{grid-template-columns:1fr 1fr}}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp3);margin-bottom:var(--sp4)}
+@media(max-width:899px){.kpi-row{grid-template-columns:repeat(2,1fr);gap:var(--sp2)}}
+@media(max-width:480px){.kpi-row{grid-template-columns:1fr 1fr;gap:var(--sp2)}}
 
 .kpi-card{
   border-radius:var(--radius);
-  padding:var(--sp6);
-  display:flex;align-items:center;gap:var(--sp4);
+  padding:var(--sp3) var(--sp4);
+  display:flex;align-items:center;gap:var(--sp3);
   position:relative;overflow:hidden;
 }
 .kpi-card::after{
@@ -150,12 +150,12 @@ img{display:block;max-width:100%}
   font-size:13px;font-weight:900;color:#fff;text-align:center;line-height:1;
   pointer-events:none;
 }
-.kpi-info b{display:block;font-size:26px;font-weight:900;line-height:1;color:#fff}
-.kpi-info span{font-size:12px;color:rgba(255,255,255,.75);margin-top:3px;display:block}
+.kpi-info b{display:block;font-size:clamp(18px,4vw,26px);font-weight:900;line-height:1;color:#fff}
+.kpi-info span{font-size:clamp(10px,2.5vw,12px);color:rgba(255,255,255,.75);margin-top:2px;display:block;line-height:1.2}
 
 /* ─── STORE GRID ───────────────────────────────── */
 .store-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp4)}
-@media(max-width:899px){.store-grid{grid-template-columns:1fr}}
+@media(max-width:899px){.store-grid{grid-template-columns:1fr;gap:var(--sp3)}}
 
 /* ─── CHART WRAPPER ────────────────────────────── */
 .chart-wrap{position:relative;height:220px}
@@ -197,7 +197,7 @@ img{display:block;max-width:100%}
 .rel-btn:hover{filter:brightness(1.15)}
 
 /* ─── COLLAB GRID ───────────────────────────────── */
-.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:var(--sp3);margin-bottom:var(--sp6)}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:var(--sp2);margin-bottom:var(--sp4)}
 .tile{
   background:var(--s2);border:1px solid var(--bd);
   border-radius:var(--radius);padding:var(--sp4);
@@ -207,7 +207,7 @@ img{display:block;max-width:100%}
 .tile:hover{transform:translateY(-2px);border-color:var(--pu1);box-shadow:0 8px 24px rgba(124,58,237,.2)}
 .tile strong{display:block;font-size:14px;font-weight:800;margin-bottom:4px}
 .tile .trole{font-size:11px;color:var(--tx2);margin-bottom:var(--sp2)}
-.tile .tcnt{font-size:22px;font-weight:900;color:var(--te1);margin-bottom:2px}
+.tile .tcnt{font-size:clamp(18px,4vw,22px);font-weight:900;color:var(--te1);margin-bottom:2px}
 .tile .tlast{font-size:10px;color:var(--tx3)}
 
 /* ─── TILE COLORS ────────────────────────────────── */
@@ -215,12 +215,12 @@ img{display:block;max-width:100%}
 .t2{border-top:3px solid var(--gr1)}.t3{border-top:3px solid var(--or1)}
 
 /* ─── SEARCH / FILTERS ──────────────────────────── */
-.sbox{display:flex;align-items:center;gap:8px;background:var(--s2);border:1px solid var(--bd);border-radius:var(--radius);padding:var(--sp3) var(--sp4);margin-bottom:var(--sp4)}
+.sbox{display:flex;align-items:center;gap:8px;background:var(--s2);border:1px solid var(--bd);border-radius:var(--radius);padding:10px var(--sp3);margin-bottom:var(--sp3)}
 .sbox input{flex:1;background:none;border:none;outline:none;font-size:15px}
 .si{color:var(--tx3);font-size:18px}
 .sep{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--tx3);margin:var(--sp6) 0 var(--sp3)}
-.frow{display:flex;gap:var(--sp3);margin-bottom:var(--sp4);flex-wrap:wrap}
-.frow input{flex:1;min-width:120px;background:var(--s2);border:1px solid var(--bd);border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;outline:none;transition:var(--transition)}
+.frow{display:flex;gap:var(--sp2);margin-bottom:var(--sp3);flex-wrap:wrap}
+.frow input{flex:1;min-width:90px;background:var(--s2);border:1px solid var(--bd);border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;outline:none;transition:var(--transition)}
 .frow input:focus{border-color:var(--pu1)}
 
 /* ─── HISTORY ROWS ────────────────────────────────── */
@@ -341,7 +341,7 @@ img{display:block;max-width:100%}
 @media(max-width:899px){.sidebar{display:none}}
 .nav button{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;font-weight:600;color:var(--tx3);padding:6px 12px;border-radius:var(--radius-sm);transition:var(--transition)}
 .nav button.on{color:var(--te1)}
-.nav button .ic{font-size:22px}
+.nav button .ic{font-size:20px}
 </style>
 <body>
 <div class="shell">
@@ -557,8 +557,8 @@ img{display:block;max-width:100%}
 
 document.addEventListener('DOMContentLoaded', function(){
 // ─── DATA ─────────────────────────────────────────────────────────────────────
-var DEF_CO=[{n:'Alice Dupont',r:'Specialist'},{n:'Thomas Bernard',r:'Business Pro'},{n:'Camille Martin',r:'Expert'}];
-var DEF_IT=['Connecter un autre shopping','Personnaliser une autre démo','Autre AppleCare','Autre business','Autre ligne','Autre financement','Autre alignement'];
+var DEF_CO=[];
+var DEF_IT=[];
 
 function lj(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}}
 function sj(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
